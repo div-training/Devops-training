@@ -1,0 +1,42 @@
+name: Demo Continous Integration for Batch2
+
+on:
+   push:  
+     branches: 
+       - master
+       - stage1
+   # pull_request:
+   #  branches:
+   #    - master
+   # schedule:
+   #   - cron: '30 14 * * MON-FRI'
+jobs:
+    build:
+       runs-on: windows-latest
+
+       steps:
+       - name: checkout to repository
+         uses: actions/checkout@v3
+       
+       - name: Download and Setup JDK
+         uses:  actions/setup-java@v3
+         with:
+           java-version: '11'
+           distributor: 'temurin'
+           continue-on-error: true 
+       - name: Download and Setup Maven
+         uses: stcarolas/setup-maven@v4.4
+         with: 
+           maven-version: 3.8.2
+       - name: Build using Maven
+         run: mvn clean install
+test:
+  needs: build
+  runs-on: ${{ needs.build.outputs.runs-on}}
+    steps:
+      - name:Run Test
+        run: mvn test "-Dcucumber.filter.tags=@smoke"
+        env:
+          DISPLAY: 19
+          CUCUMBER_PUBLISH_TOKEN: 4e0638b1-9bf3-4ef1-989f-3a9cb0dbf8be
+          continue-on-error: true
