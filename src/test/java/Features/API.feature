@@ -1,3 +1,4 @@
+@smoke
 Feature: API Testing
   Scenario: Verify Get call for ReqRes
     When User sends "Get" request to "/api/users/2" endpoint
