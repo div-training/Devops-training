@@ -29,9 +29,9 @@ public class ApiSteps {
     @Then("User verifies response body contains following details")
     public void user_verifies_response_body_contains_following_details(io.cucumber.datatable.DataTable dataTable) {
         Assert.assertEquals(response.body().jsonPath().getString("booking." + dataTable.cell(0, 0)), dataTable.cell(1, 0));
-        Assert.assertEquals(response.body().jsonPath().getString("data."+dataTable.cell(0,1)),dataTable.cell(1,1));
-        Assert.assertEquals(response.body().jsonPath().getString("data."+dataTable.cell(0,2)),dataTable.cell(1,2));
-        Assert.assertEquals(response.body().jsonPath().getString("data."+dataTable.cell(0,3)),dataTable.cell(1,3));
+        Assert.assertEquals(response.body().jsonPath().getString("booking."+dataTable.cell(0,1)),dataTable.cell(1,1));
+        Assert.assertEquals(response.body().jsonPath().getString("booking."+dataTable.cell(0,2)),dataTable.cell(1,2));
+        Assert.assertEquals(response.body().jsonPath().getString("booking."+dataTable.cell(0,3)),dataTable.cell(1,3));
     }
 
     @Then("User verifies the response body contains following details")
