@@ -25,7 +25,7 @@ jobs:
         
   test:
     needs: build
-    runs-on: '${{ needs.build.outputs.runs-on}}'
+    runs-on: ${{ needs.build.outputs.runs-on}}
     steps:
       - name: Run Test
         run: mvn test "-Dcucumber.filter.tags=@smoke"
