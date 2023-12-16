@@ -27,7 +27,7 @@ jobs:
     runs-on: '${{ needs.build.outputs.runs-on}}'
     steps:
       - name: Run Test
-    run: mvn test "-Dcucumber.filter.tags=@smoke"
+        run: mvn test "-Dcucumber.filter.tags=@smoke"
     env:
       DISPLAY: 19
       CUCUMBER_PUBLISH_TOKEN: 5a34f351-332e-447c-9238-ba3550c3f89e
