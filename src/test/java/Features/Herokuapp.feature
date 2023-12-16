@@ -1,3 +1,4 @@
+@smoke
 Feature: API Testing of HerokuApp
   Scenario: Verify create booking
     When User sets the following details in booking request body
