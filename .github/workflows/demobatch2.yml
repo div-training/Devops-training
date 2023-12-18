@@ -29,3 +29,9 @@ jobs:
           DISPLAY: 19
           CUCUMBER_PUBLISH_TOKEN: 5a34f351-332e-447c-9238-ba3550c3f89e
           continue-on-error: true
+          
+      - name: Upload Report
+        uses: actions/upload-artifact@v4.0.0
+        with:
+          path: test-output
+        
